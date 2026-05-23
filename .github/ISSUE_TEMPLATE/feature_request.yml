@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest an idea for Bitdim.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: |
+        Describe the workflow or annoyance first — the implementation
+        suggestion can come later. There may be a simpler way.
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: How might Bitdim help?
+      description: Optional. If you have a concrete suggestion, describe it here.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+      description: |
+        Are there existing tools that do this? What's the gap?
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope check
+      description: |
+        Bitdim is intentionally minimal (~120 KB, pure Win32, single .exe).
+        Which best describes your request?
+      options:
+        - Small feature that fits the current scope
+        - Bigger feature that may need its own tool / plugin
+        - Bug fix or polish (please use bug template instead)
+    validations:
+      required: true

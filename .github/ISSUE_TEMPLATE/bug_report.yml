@@ -1,0 +1,62 @@
+name: Bug report
+description: Bitdim does something it shouldn't, or doesn't do something it should.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: e.g. After clicking the tray icon, the dim overlay flashes for one frame and disappears.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: input
+    id: bitdim-version
+    attributes:
+      label: Bitdim version
+      placeholder: e.g. 0.1.0 (right-click bitdim.exe -> Properties -> Details)
+    validations:
+      required: true
+
+  - type: input
+    id: windows-version
+    attributes:
+      label: Windows version
+      placeholder: e.g. Windows 11 24H2 (run `winver` to see)
+    validations:
+      required: true
+
+  - type: textarea
+    id: monitors
+    attributes:
+      label: Display setup
+      description: Number of monitors, resolution and DPI scale of each.
+      placeholder: |
+        1: 3840x2160 at 200%
+        2: 1920x1080 at 100%
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots, logs, related processes, etc.

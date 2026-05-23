@@ -1,0 +1,23 @@
+# Build artifacts
+*.exe
+*.res
+*.o
+*.obj
+*.exp
+*.lib
+*.pdb
+*.ilk
+
+# Editors / IDEs
+.vscode/
+.vs/
+*.swp
+*~
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local release-staging area (not part of the source tree)
+release/

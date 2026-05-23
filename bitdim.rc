@@ -1,0 +1,48 @@
+#include <windows.h>
+#include <winver.h>
+
+#define IDI_MAIN 101
+IDI_MAIN ICON "bitdim.ico"
+
+/* CREATEPROCESS_MANIFEST_RESOURCE_ID (1) of type RT_MANIFEST (24). */
+1 24 "bitdim.manifest"
+
+/* ------------------------------------------------------------------ versioninfo
+ * Read by File Properties -> Details and by any standard packaging /
+ * signing tool. Bump FILEVERSION + ProductVersion on every release. */
+
+#define VER_MAJOR 0
+#define VER_MINOR 1
+#define VER_PATCH 0
+#define VER_BUILD 0
+
+#define VER_STR  "0.1.0.0"
+
+1 VERSIONINFO
+FILEVERSION    VER_MAJOR,VER_MINOR,VER_PATCH,VER_BUILD
+PRODUCTVERSION VER_MAJOR,VER_MINOR,VER_PATCH,VER_BUILD
+FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+FILEFLAGS      0x0L
+FILEOS         VOS_NT_WINDOWS32
+FILETYPE       VFT_APP
+FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"   /* English (United States), Unicode (0x4b0 = 1200) */
+        BEGIN
+            VALUE "CompanyName",      "alexzyp"
+            VALUE "FileDescription",  "Bitdim - spotlight focus dimmer for Windows"
+            VALUE "FileVersion",      VER_STR
+            VALUE "InternalName",     "Bitdim"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 alexzyp. MIT License."
+            VALUE "OriginalFilename", "bitdim.exe"
+            VALUE "ProductName",      "Bitdim"
+            VALUE "ProductVersion",   VER_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04b0
+    END
+END

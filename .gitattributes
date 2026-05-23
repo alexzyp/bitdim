@@ -1,0 +1,8 @@
+# Normalize all text files to LF on commit; check out as-is on Windows.
+* text=auto eol=lf
+
+# Force binary handling on resource files.
+*.ico binary
+*.res binary
+*.exe binary
+*.png binary
