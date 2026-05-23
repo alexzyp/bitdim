@@ -1,6 +1,7 @@
 # Bitdim
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Build](https://github.com/alexzyp/bitdim/actions/workflows/build.yml/badge.svg)](https://github.com/alexzyp/bitdim/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/v/release/alexzyp/bitdim?include_prereleases&sort=semver)](https://github.com/alexzyp/bitdim/releases)
 [![Downloads](https://img.shields.io/github/downloads/alexzyp/bitdim/total.svg)](https://github.com/alexzyp/bitdim/releases)
 [![Platform: Windows 7+](https://img.shields.io/badge/Windows-7%20%7C%208%20%7C%2010%20%7C%2011-0078D6.svg)](#compatibility)
