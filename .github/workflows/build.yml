@@ -1,0 +1,73 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Run only the most recent push per branch / PR; cancel any earlier in-flight.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build with mingw-w64 i686
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up MSYS2 + MinGW i686 toolchain
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW32
+          install: >-
+            mingw-w64-i686-gcc
+            mingw-w64-i686-binutils
+            make
+          path-type: inherit
+          update: false
+
+      - name: Show toolchain versions
+        shell: cmd
+        run: |
+          gcc --version
+          windres --version
+          make --version
+
+      - name: Build release
+        shell: cmd
+        run: make CC=gcc
+
+      - name: Build debug
+        shell: cmd
+        run: make CC=gcc debug
+
+      - name: Verify exe metadata
+        shell: pwsh
+        run: |
+          $f = Get-Item .\bitdim.exe
+          $v = $f.VersionInfo
+          Write-Host ("File           : {0} ({1} bytes)" -f $f.Name, $f.Length)
+          Write-Host ("FileVersion    : {0}" -f $v.FileVersion)
+          Write-Host ("FileDescription: {0}" -f $v.FileDescription)
+          if ($v.FileVersion -ne "0.1.0.0") {
+              throw "Version mismatch: expected 0.1.0.0, got $($v.FileVersion)"
+          }
+          if ($f.Length -gt 204800) {
+              throw "Binary too large: $($f.Length) bytes (limit 200 KB)"
+          }
+          Write-Host "OK"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitdim-ci-${{ github.sha }}
+          path: |
+            bitdim.exe
+            bitdim_debug.exe
+          if-no-files-found: error
+          retention-days: 14
